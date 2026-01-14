@@ -1,0 +1,26 @@
+{
+  "version": "0.1.0",
+  "description": "GenomeMCP CLI - Genomic intelligence with ClinVar, gnomAD, Reactome",
+  "homepage": "https://github.com/nexisdev/GenomeMCP",
+  "license": "MIT",
+  "notes": "Requires Python 3.10+ and optionally Ollama for chat mode.",
+  "suggest": {
+    "Ollama (for AI chat)": "ollama"
+  },
+  "depends": ["python"],
+  "url": "https://github.com/nexisdev/GenomeMCP/releases/download/v0.1.0/genomemcp-windows-x64.exe",
+  "hash": "REPLACE_WITH_ACTUAL_SHA256",
+  "bin": "genomemcp-windows-x64.exe",
+  "shortcuts": [
+    ["genomemcp-windows-x64.exe", "GenomeMCP"]
+  ],
+  "checkver": {
+    "github": "https://github.com/nexisdev/GenomeMCP"
+  },
+  "autoupdate": {
+    "url": "https://github.com/nexisdev/GenomeMCP/releases/download/v$version/genomemcp-windows-x64.exe",
+    "hash": {
+      "url": "$url.sha256"
+    }
+  }
+}

@@ -2,12 +2,54 @@
 name = "genomemcp"
 version = "0.1.0"
 description = "A Model Context Protocol server for querying ClinVar genomic data."
+readme = "README.md"
 requires-python = ">=3.10"
+license = {text = "MIT"}
+keywords = ["genomics", "clinvar", "mcp", "bioinformatics", "cli"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
 dependencies = [
     "mcp>=0.1.0",
     "httpx>=0.27.0",
-    "xmltodict>=0.13.0"
+    "xmltodict>=0.13.0",
+    "supabase>=2.0.0",
+    "uvicorn>=0.30.0",
 ]
+
+[project.optional-dependencies]
+cli = [
+    "typer[all]>=0.9.0",
+    "rich>=13.0.0",
+    "textual>=0.40.0",
+]
+llm = [
+    "ollama>=0.3.0",
+]
+research = [
+    "denario>=1.0.0",  # Requires Python 3.12+
+]
+dev = [
+    "pytest>=9.0.2",
+    "pytest-asyncio>=1.3.0",
+]
+all = [
+    "genomemcp[cli,llm,dev]",  # research excluded due to Python 3.12+ requirement
+]
+
+[project.scripts]
+genomemcp = "src.cli.app:cli"
+
+[project.entry-points."mcp.server"]
+genomemcp = "src.main:mcp"
 
 [build-system]
 requires = ["hatchling"]
@@ -16,8 +58,6 @@ build-backend = "hatchling.build"
 [tool.hatch.build.targets.wheel]
 packages = ["src"]
 
-[dependency-groups]
-dev = [
-    "pytest>=9.0.2",
-    "pytest-asyncio>=1.3.0",
-]
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
