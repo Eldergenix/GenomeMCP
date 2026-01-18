@@ -294,3 +294,7 @@ MIT License — see [LICENSE](LICENSE) for details.
 <p align="center">
   <strong>Built for AI agents. Powered by open genomic data.</strong>
 </p>
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Nexis-AI/branding-assets/refs/heads/main/nex_banner.png" alt="Nexis AI Banner" width="100%" />
+</div>
